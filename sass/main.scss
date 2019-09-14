@@ -3,8 +3,22 @@
 @import "../node_modules/bulma/sass/layout/section.sass";
 @import "../node_modules/bulma/sass/elements/container.sass";
 
+@import url('https://fonts.googleapis.com/css?family=PT+Mono|Playfair+Display&display=swap');
+
+::-webkit-scrollbar {
+    display: none;
+}
+
 :root {
     scroll-behavior: smooth;
+}
+
+.fancy {
+    font-family: 'Playfair Display', serif;
+}
+
+.mono {
+    font-family: 'PT Mono', monospace;
 }
 
 .grid {
@@ -41,4 +55,12 @@
     .grid-col--3 {
         display: block;
     }
+}
+
+.footer {
+    padding-bottom: 2rem;
+}
+
+.hero {
+    padding-top: 2rem;
 }

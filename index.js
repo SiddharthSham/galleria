@@ -4,11 +4,6 @@ import mediumZoom from 'medium-zoom'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-var col = new Colcade('.grid', {
-    columns: '.grid-col',
-    items: '.grid-item'
-});
-
 AOS.init();
 
 mediumZoom('[data-zoomable]', {
@@ -17,16 +12,12 @@ mediumZoom('[data-zoomable]', {
     scrollOffset: 40,
 })
 
-function logEvent(msg) {
-    console.log(msg)
-}
+const pageLazyLoad = new LazyLoad({ elements_selector: ".lazy",});
 
-const lazyLoadOptions = {
-    elements_selector: ".lazy",
-
-    callback_error: element => {
-        logEvent("ERROR", element);
-        element.src = "https://placehold.it/220x280?text=Placeholder";
-    }
-};
-const pageLazyLoad = new LazyLoad(lazyLoadOptions);
+fetch('https://api.quotable.io/random')
+  .then(res => res.json())
+  .then((json) => {
+      console.log(json.content)
+      console.log("Quote by: " + json.author)
+  })
+  .catch(err => console.log(err))
